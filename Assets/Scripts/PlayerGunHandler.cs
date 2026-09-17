@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,7 +7,12 @@ public class PlayerGunHandler : MonoBehaviour
 {
 
     [SerializeField]
-    private float cameraDistance;
+    private float cameraMaxDistance;
+
+    [SerializeField]
+    [Min(0)]
+    [Range(0,1)]
+    private float percentDistance;
 
     [SerializeField]
     private Transform cameraTarget;
@@ -21,12 +27,13 @@ public class PlayerGunHandler : MonoBehaviour
         while (true) {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(mousePosition);
             Vector2 mouseDir = mousePos - (Vector2)transform.position;
+            mouseDir *= percentDistance;
 
             Vector2 targetPos = mouseDir;
-            if(mouseDir.magnitude > cameraDistance) {
+            if(mouseDir.magnitude > cameraMaxDistance) {
                 mouseDir.Normalize();
 
-                targetPos = mouseDir * cameraDistance;
+                targetPos = mouseDir * cameraMaxDistance;
             }
 
             cameraTarget.position = transform.position + (Vector3)targetPos;
