@@ -4,6 +4,9 @@ using UnityEngine;
 [Serializable]
 public class PlayerWalkState : PlayerMovementState
 {
+    [SerializeField]
+    private string idleParameter;
+
     [Header("Movement Values")]
 
     [SerializeField]
@@ -15,19 +18,18 @@ public class PlayerWalkState : PlayerMovementState
     [Range(0,1)]
     private float accelerationSpeed;
 
-    public override void OnValidate(GameObject source) {
-        
+    public override void Initialize(PlayerMovement movement, Animator animator, Rigidbody2D rb) {
+        base.Initialize(movement, animator, rb);
     }
-    public override void Initialize(PlayerData data, PlayerMovement movement) {
-        base.Initialize(data, movement);
-    }
-    public override void EnterState(Animator animator) {
-        base.EnterState(animator);
+    public override void EnterState() {
+        animator.SetTrigger(idleParameter);
     }
     public override void ExitState() {
         
     }
-    public override void MovementUpdate(Rigidbody2D rb, Vector2 desiredDirection) {
+    public override void MovementUpdate(Vector2 desiredDirection) {
+        animator.SetFloat(animationTrigger, Mathf.Abs(rb.linearVelocity.magnitude));
+
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, speed * desiredDirection, accelerationSpeed * Time.deltaTime);
     }
 }

@@ -3,19 +3,37 @@ using UnityEngine;
 
 [Serializable]
 public class PlayerKnockBackState : PlayerMovementState {
-    public override void OnValidate(GameObject source) {
 
+    [SerializeField]
+    private float knockBackSlowdown;
+
+    [SerializeField]
+    [Min(0)]
+    private float knockBackEndThreshold;
+
+    private Vector2 currentForce;
+
+    public override void Initialize(PlayerMovement movement, Animator animator, Rigidbody2D rb) {
+        base.Initialize(movement, animator, rb);
     }
-    public override void Initialize(PlayerData data, PlayerMovement movement) {
-        base.Initialize(data, movement);
-    }
-    public override void EnterState(Animator animator) {
-        base.EnterState(animator);
+    public override void EnterState() {
+        base.EnterState();
     }
     public override void ExitState() {
 
     }
-    public override void MovementUpdate(Rigidbody2D rb, Vector2 desiredDirection) {
+    public override void MovementUpdate(Vector2 desiredDirection) {
+        if(currentForce.magnitude <= knockBackEndThreshold) {
+            playerMovement.Transition(playerMovement.PlayerWalkState);
+            return;
+        }
 
+        rb.linearVelocity = currentForce;
+        currentForce = Vector2.MoveTowards(currentForce, Vector2.zero, knockBackSlowdown * Time.deltaTime);
+    }
+
+    public void KnockBack(Vector2 force) {
+        playerMovement.Transition(this);
+        currentForce = force;
     }
 }

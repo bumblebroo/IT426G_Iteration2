@@ -2,23 +2,25 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public abstract class PlayerMovementState
+public abstract class PlayerMovementState : MonoBehaviour
 {
     [Header("Animator")]
     [SerializeField]
-    private string animationTrigger;
+    protected string animationTrigger;
 
-    protected PlayerData playerData;
     protected PlayerMovement playerMovement;
+    protected Animator animator;
+    protected Rigidbody2D rb;
+    protected SpriteRenderer sr;
 
-    public abstract void OnValidate(GameObject source);
-    public virtual void Initialize(PlayerData data, PlayerMovement movement) {
-        playerData = data;
+    public virtual void Initialize(PlayerMovement movement, Animator animator, Rigidbody2D rb) {
         playerMovement = movement;
+        this.animator = animator;
+        this.rb = rb;
     }
-    public virtual void EnterState(Animator animator) {
+    public virtual void EnterState() {
         animator.SetTrigger(animationTrigger);
     }
     public abstract void ExitState();
-    public abstract void MovementUpdate(Rigidbody2D rb, Vector2 desiredDirection);
+    public abstract void MovementUpdate(Vector2 desiredDirection);
 }

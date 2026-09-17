@@ -2,13 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerWalkState), typeof(PlayerDashState), typeof(PlayerKnockBackState))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerData playerData;
-
-    [Space]
-
     [SerializeField]
     private PlayerWalkState playerWalkState;
     [SerializeField]
@@ -33,10 +29,6 @@ public class PlayerMovement : MonoBehaviour
         if (!animator) {
             Debug.LogError("Missing animator");
         }
-
-        playerWalkState.OnValidate(this.gameObject);
-        playerDashState.OnValidate(this.gameObject);
-        playerKnockBackState.OnValidate(this.gameObject);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,9 +36,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        playerWalkState.Initialize(playerData, this);
-        playerDashState.Initialize(playerData, this);
-        playerKnockBackState.Initialize(playerData, this);
+        playerWalkState.Initialize(this, animator, rb);
+        playerDashState.Initialize(this, animator, rb);
+        playerKnockBackState.Initialize(this, animator, rb);
 
         currentMovementState = playerWalkState;
 
@@ -62,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
                 continue;
             }
 
-            currentMovementState.MovementUpdate(rb, desiredDirection);
+            currentMovementState.MovementUpdate(desiredDirection);
         }
     }
 
@@ -74,10 +66,22 @@ public class PlayerMovement : MonoBehaviour
 
         currentMovementState.ExitState();
         currentMovementState = newState;
-        currentMovementState.EnterState(animator);
+        currentMovementState.EnterState();
     }
 
     public void TakeMovementInput(InputAction.CallbackContext context) {
         desiredDirection = context.ReadValue<Vector2>();
+    }
+
+    public void Dash(InputAction.CallbackContext context) {
+        if(context.phase != InputActionPhase.Started) {
+            return;
+        }
+
+        if(currentMovementState == playerKnockBackState) {
+            return;
+        }
+
+        Transition(playerDashState);
     }
 }
