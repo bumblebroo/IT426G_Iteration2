@@ -25,8 +25,7 @@ public class PlayerGunHandler : MonoBehaviour
 
     private IEnumerator MoveCamera() {
         while (true) {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(mousePosition);
-            Vector2 mouseDir = mousePos - (Vector2)transform.position;
+            Vector2 mouseDir = mousePosition - (Vector2)transform.position;
             mouseDir *= percentDistance;
 
             Vector2 targetPos = mouseDir;
@@ -43,8 +42,7 @@ public class PlayerGunHandler : MonoBehaviour
     }
 
     public void OnMouseMove(InputAction.CallbackContext context) {
-        Debug.Log("moved mouse");
-        mousePosition = context.ReadValue<Vector2>();
+        mousePosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
     }
 
     private void OnDrawGizmos() {
