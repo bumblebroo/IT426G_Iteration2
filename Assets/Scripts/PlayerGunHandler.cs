@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerGunHandler : MonoBehaviour
 {
+    [SerializeField]
+    private SpriteRenderer playerSprite;
+    [SerializeField]
+    private SpriteRenderer gunSprite;
+
 
     [SerializeField]
     private float cameraMaxDistance;
@@ -15,9 +20,11 @@ public class PlayerGunHandler : MonoBehaviour
     private float percentDistance;
 
     [SerializeField]
-    private Transform cameraTarget;
+    private Transform cameraTarget, gunPivot;
 
-    private Vector2 mousePosition;
+    private Vector2 mouseScreenPosition;
+
+    private Vector2 mouseWorldPosition;
 
     private void Start() {
         StartCoroutine(MoveCamera());
@@ -25,7 +32,8 @@ public class PlayerGunHandler : MonoBehaviour
 
     private IEnumerator MoveCamera() {
         while (true) {
-            Vector2 mouseDir = mousePosition - (Vector2)transform.position;
+            mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+            Vector2 mouseDir = mouseWorldPosition - (Vector2)transform.position;
             mouseDir *= percentDistance;
 
             Vector2 targetPos = mouseDir;
@@ -37,16 +45,28 @@ public class PlayerGunHandler : MonoBehaviour
 
             cameraTarget.position = transform.position + (Vector3)targetPos;
 
+            if(transform.position.x > mouseWorldPosition.x) {
+                playerSprite.flipX = true;
+                gunSprite.flipY = true;
+            } else if(transform.position.x < mouseWorldPosition.x) {
+                playerSprite.flipX = false;
+                gunSprite.flipY = false;
+            }
+
+            gunPivot.right = (Vector2)mouseWorldPosition - (Vector2)gunPivot.position;
+
             yield return new WaitForEndOfFrame();
         }
     }
 
     public void OnMouseMove(InputAction.CallbackContext context) {
-        mousePosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+        mouseScreenPosition = context.ReadValue<Vector2>();
     }
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(cameraTarget.position, 0.1f);
+
+        Gizmos.DrawWireSphere(transform.position, cameraMaxDistance);
     }
 }
