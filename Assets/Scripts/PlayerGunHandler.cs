@@ -47,22 +47,17 @@ public class PlayerGunHandler : MonoBehaviour
 
             if(playerSprite.transform.position.x > mouseWorldPosition.x) {
                 playerSprite.flipX = true;
+                gunSprite.flipY = true;
             } else if(playerSprite.transform.position.x < mouseWorldPosition.x) {
                 playerSprite.flipX = false;
+                gunSprite.flipY = false;
             }
 
-            Vector2 gunDir = (Vector2)mouseWorldPosition - (Vector2)gunPivot.position;
+            Vector2 gunDir = mouseWorldPosition - (Vector2)gunPivot.position;
             gunDir.Normalize();
             float angle = Mathf.Atan2(gunDir.y, gunDir.x);
             gunPivot.rotation = new Quaternion(0, 0, Mathf.Sin(angle / 2), Mathf.Cos(angle / 2));
 
-            if (gunDir.x > 0) {
-                gunSprite.flipY = false;
-                Debug.Log("mouse is to the right");
-            } else if (gunDir.x < 0) {
-                Debug.Log("mouse is to the left");
-                gunSprite.flipY = true;
-            }
             yield return new WaitForEndOfFrame();
         }
     }
