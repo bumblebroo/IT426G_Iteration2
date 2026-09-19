@@ -25,6 +25,8 @@ public class PlayerDashState : PlayerMovementState {
     private Vector2 targetDir;
     private bool canDash = true;
 
+    public bool CanDash => canDash;
+
     public override void Initialize(PlayerMovement movement, Animator animator, Rigidbody2D rb) {
         base.Initialize(movement, animator, rb);
     }
@@ -51,6 +53,7 @@ public class PlayerDashState : PlayerMovementState {
 
         if(time >= dashDuration) {
             playerMovement.Transition(playerMovement.PlayerWalkState);
+            StartCoroutine(Cooldown());
             return;
         }
 

@@ -64,6 +64,10 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        if(newState == playerDashState && !playerDashState.CanDash) {
+            return;
+        }
+
         currentMovementState.ExitState();
         currentMovementState = newState;
         currentMovementState.EnterState();

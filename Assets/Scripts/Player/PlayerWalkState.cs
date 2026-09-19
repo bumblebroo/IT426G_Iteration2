@@ -33,7 +33,7 @@ public class PlayerWalkState : PlayerMovementState
 
     public void OnValidate() {
         if (!walkParticles) {
-            Debug.LogError("Missing walkparticles");
+            //Debug.LogError("Missing walkparticles");
         }
     }
 
@@ -48,16 +48,20 @@ public class PlayerWalkState : PlayerMovementState
     }
     public override void MovementUpdate(Vector2 desiredDirection) {
         bool walking = Mathf.Abs(rb.linearVelocity.magnitude) >= animationThreshold;
-        Debug.Log(walking);
         animator.SetBool(animationTrigger, walking);
 
-        if (walking) {
+        /*
+        if (walking && !walkParticles.isPlaying) {
             walkParticles.Play();
         } else {
             walkParticles.Stop();
         }
+        */
 
-        float lerpSpeed = desiredDirection.magnitude == 0 ? deAccelerationSpeed : accelerationSpeed;
+        float lerpSpeed = accelerationSpeed;
+        if(desiredDirection.magnitude == 0) {
+            lerpSpeed = deAccelerationSpeed;
+        }
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, speed * desiredDirection, lerpSpeed * Time.deltaTime);
     }
 }
