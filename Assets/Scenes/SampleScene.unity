@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 299349035}
   - component: {fileID: 299349036}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Prototypes_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,8 +308,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 0.9987571
+    width: 0.99961555
+    height: 1
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 812472533}
   - component: {fileID: 812472537}
   - component: {fileID: 812472538}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,11 +623,35 @@ MonoBehaviour:
     m_ActionId: 6b444451-8a00-4d00-a97e-f47457f736a8
     m_ActionName: 'Player/Look[/Mouse/delta,/Pen/delta]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1105133137}
+        m_TargetAssemblyTypeName: PlayerGunHandler, Assembly-CSharp
+        m_MethodName: HandleShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: 'Player/Attack[/Mouse/leftButton,/Keyboard/enter]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1105133137}
+        m_TargetAssemblyTypeName: PlayerGunHandler, Assembly-CSharp
+        m_MethodName: PickUpGun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: 'Player/Interact[/Keyboard/e]'
   - m_PersistentCalls:
@@ -893,7 +917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1105133136}
   - component: {fileID: 1105133137}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerGunHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -935,8 +959,44 @@ MonoBehaviour:
   percentDistance: 0.4
   cameraTarget: {fileID: 1395601349}
   gunPivot: {fileID: 1532120372}
-  firePoint: {fileID: 0}
-  startingGun: {fileID: 0}
+  firePoint: {fileID: 1364422401}
+  startingGun: {fileID: 11400000, guid: 19322220a1dabc04f95c8bc3ba7f5073, type: 2}
+  pickUpRadius: 2.83
+  pickUpLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  dropPrefab: {fileID: 6535859936239477998, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+--- !u!1 &1364422400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1364422401}
+  m_Layer: 3
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1364422401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364422400}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.55, y: 0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1532120372}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1395601348
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,7 +1006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1395601349}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -977,7 +1037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1532120372}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,6 +1058,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 299349035}
+  - {fileID: 1364422401}
   m_Father: {fileID: 1105133136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1624240856
@@ -1010,7 +1071,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1624240857}
   - component: {fileID: 1624240858}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,7 +1426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1746057032}
   - component: {fileID: 1746057033}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1504,7 +1565,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -20
   m_Sprite: {fileID: 21300000, guid: 9115e694ac9635f4c8617b54f37fd80c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.12737818, g: 0.1254902, b: 0.24705882, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
@@ -1917,6 +1978,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &3892268884033065658
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6535859936239477998, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_Name
+      value: Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899342411990824721, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899342411990824721, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6726572
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899342411990824721, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899342411990824721, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899342411990824721, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899342411990824721, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899342411990824721, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899342411990824721, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899342411990824721, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899342411990824721, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228161974595178921, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5537693275855835441, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1930,3 +2055,4 @@ SceneRoots:
   - {fileID: 1721370570}
   - {fileID: 1720207901}
   - {fileID: 1791984917}
+  - {fileID: 3892268884033065658}

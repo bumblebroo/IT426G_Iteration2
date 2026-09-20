@@ -16,6 +16,14 @@ public class GunScriptableObject : ScriptableObject
 
     [SerializeField]
     [Min(0)]
+    private float angleVariation;
+
+    [SerializeField]
+    [Min(1)]
+    private int bulletAmount = 1;
+
+    [SerializeField]
+    [Min(0)]
     private float firePointDistance;
 
 
@@ -28,7 +36,9 @@ public class GunScriptableObject : ScriptableObject
     public Sprite Sprite => sprite;
     public float FireRate => fireRate;
     public bool IsFullAuto => isFullAuto;
-    public float FirePointDistance => FirePointDistance;
+    public float AngleVariation => angleVariation;
+    public int BulletAmount => bulletAmount;
+    public float FirePointDistance => firePointDistance;
 
     public ProjectileScriptableObject ProjectileScriptableObject => projectileScriptableObject;
     public GameObject ShootEffectPrefab => shootEffectPrefab;

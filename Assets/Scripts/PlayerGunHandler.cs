@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Linq;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +27,8 @@ public class PlayerGunHandler : MonoBehaviour
 
     private Vector2 mouseWorldPosition;
 
+    private bool autoShoot = false;
+
 
     [SerializeField]
     private GunScriptableObject startingGun;
@@ -35,9 +39,24 @@ public class PlayerGunHandler : MonoBehaviour
 
     private float timer = 0;
 
+    [Space]
+
+    [SerializeField]
+    private float pickUpRadius;
+
+    [SerializeField]
+    private LayerMask pickUpLayers;
+
+    [SerializeField]
+    private GameObject dropPrefab;
+
+    private GunPickup currentAvailablePickup;
+
 
     private void Start() {
         StartCoroutine(MoveCamera());
+
+        guns = new GunScriptableObject[2];
 
         guns[0] = startingGun;
         currentGunIndex = 0;
@@ -61,10 +80,10 @@ public class PlayerGunHandler : MonoBehaviour
 
             if(playerSprite.transform.position.x > mouseWorldPosition.x) {
                 playerSprite.flipX = true;
-                gunSprite.flipY = true;
+                gunPivot.localScale = new Vector3(1, -1, 1);
             } else if(playerSprite.transform.position.x < mouseWorldPosition.x) {
                 playerSprite.flipX = false;
-                gunSprite.flipY = false;
+                gunPivot.localScale = new Vector3(1, 1, 1);
             }
 
             Vector2 gunDir = mouseWorldPosition - (Vector2)gunPivot.position;
@@ -73,6 +92,34 @@ public class PlayerGunHandler : MonoBehaviour
             gunPivot.rotation = new Quaternion(0, 0, Mathf.Sin(angle / 2), Mathf.Cos(angle / 2));
 
             timer += Time.deltaTime;
+
+            if (autoShoot) {
+                Shoot();
+            }
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, pickUpRadius, pickUpLayers);
+
+            if (currentAvailablePickup) {
+                currentAvailablePickup.DisableHighLight();
+                currentAvailablePickup = null;
+            }
+
+            float shortestDist = float.PositiveInfinity;
+            for (int i = 0; i < colliders.Length; i++) {
+                GunPickup gunPickupComponent;
+                if (!colliders[i].gameObject.TryGetComponent<GunPickup>(out gunPickupComponent)) {
+                    continue;
+                }
+
+                float dist = Vector2.Distance(transform.position, colliders[i].transform.position);
+                if(shortestDist < dist) {
+                    continue;
+                }
+
+                currentAvailablePickup = gunPickupComponent;
+                currentAvailablePickup.EnableHighlight();
+                shortestDist = dist;
+            }
 
             yield return new WaitForEndOfFrame();
         }
@@ -112,12 +159,38 @@ public class PlayerGunHandler : MonoBehaviour
         // play sound
     }
 
-    private void PickUpGun() {
+    public void PickUpGun(InputAction.CallbackContext context) {
+        if (context.phase != InputActionPhase.Started) {
+            return;
+        }
 
+        if (!currentAvailablePickup) {
+            return;
+        }
+
+        int otherGun = currentGunIndex == 0 ? 1 : 0;
+        if (guns[otherGun] == null) {
+            guns[otherGun] = currentAvailablePickup.PickUp();
+            return;
+        }
+
+        GameObject droppedGunGameObject = Instantiate(dropPrefab, transform.position, transform.rotation);
+        GunPickup gunPickupComponent = droppedGunGameObject.GetComponent<GunPickup>();
+        gunPickupComponent.Init(guns[currentGunIndex]);
+
+        guns[currentGunIndex] = currentAvailablePickup.PickUp();
+        LoadGun();
     }
 
     public void HandleShoot(InputAction.CallbackContext context) {
-        if (!guns[currentGunIndex].IsFullAuto && context.phase != InputActionPhase.Started) {
+        if (guns[currentGunIndex].IsFullAuto) {
+            if(context.phase == InputActionPhase.Canceled) {
+                autoShoot = false;
+                return;
+            }
+            autoShoot = true;
+            return;
+        } else if(context.phase != InputActionPhase.Started) {
             return;
         }
 
@@ -128,11 +201,18 @@ public class PlayerGunHandler : MonoBehaviour
             return;
         }
 
-        GameObject projectileGameObject = Instantiate(guns[currentGunIndex].ProjectileScriptableObject.Prefab, firePoint.position, firePoint.rotation);
+        Instantiate(guns[currentGunIndex].ShootEffectPrefab, firePoint.position, firePoint.rotation);
 
-        Projectile projectile = projectileGameObject.GetComponent<Projectile>();
-        projectile.Init(guns[currentGunIndex].ProjectileScriptableObject);
+        for (int i = 0; i < guns[currentGunIndex].BulletAmount; i++) {
+            GameObject projectileGameObject = Instantiate(guns[currentGunIndex].ProjectileScriptableObject.Prefab, firePoint.position, firePoint.rotation);
 
+            float angle = Random.Range(-guns[currentGunIndex].AngleVariation, guns[currentGunIndex].AngleVariation);
+            angle *= Mathf.Deg2Rad;
+            projectileGameObject.transform.rotation *= new Quaternion(0, 0, Mathf.Sin(angle / 2), Mathf.Cos(angle / 2));
+
+            Projectile projectile = projectileGameObject.GetComponent<Projectile>();
+            projectile.Init(guns[currentGunIndex].ProjectileScriptableObject);
+        }
 
         timer = 0;
     }
@@ -142,5 +222,8 @@ public class PlayerGunHandler : MonoBehaviour
         Gizmos.DrawSphere(cameraTarget.position, 0.1f);
 
         Gizmos.DrawWireSphere(transform.position, cameraMaxDistance);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, pickUpRadius);
     }
 }
