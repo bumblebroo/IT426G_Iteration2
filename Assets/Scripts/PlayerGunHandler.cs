@@ -201,7 +201,9 @@ public class PlayerGunHandler : MonoBehaviour
             return;
         }
 
-        Instantiate(guns[currentGunIndex].ShootEffectPrefab, firePoint.position, firePoint.rotation);
+        for (int i = 0; i < guns[currentGunIndex].ShootEffectPrefabs.Length; i++) {
+            Instantiate(guns[currentGunIndex].ShootEffectPrefabs[i], firePoint.position, firePoint.rotation);
+        }
 
         for (int i = 0; i < guns[currentGunIndex].BulletAmount; i++) {
             GameObject projectileGameObject = Instantiate(guns[currentGunIndex].ProjectileScriptableObject.Prefab, firePoint.position, firePoint.rotation);

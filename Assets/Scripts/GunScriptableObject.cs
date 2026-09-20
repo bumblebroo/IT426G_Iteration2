@@ -31,7 +31,7 @@ public class GunScriptableObject : ScriptableObject
     private ProjectileScriptableObject projectileScriptableObject;
 
     [SerializeField]
-    private GameObject shootEffectPrefab;
+    private GameObject[] shootEffectPrefabs;
 
     public Sprite Sprite => sprite;
     public float FireRate => fireRate;
@@ -41,7 +41,7 @@ public class GunScriptableObject : ScriptableObject
     public float FirePointDistance => firePointDistance;
 
     public ProjectileScriptableObject ProjectileScriptableObject => projectileScriptableObject;
-    public GameObject ShootEffectPrefab => shootEffectPrefab;
+    public GameObject[] ShootEffectPrefabs => shootEffectPrefabs;
 
     private void OnValidate() {
         if (!sprite) {
@@ -50,10 +50,6 @@ public class GunScriptableObject : ScriptableObject
 
         if (!projectileScriptableObject) {
             Debug.LogError("Missing projectile", this);
-        }
-
-        if (!shootEffectPrefab) {
-            Debug.LogError("Missing effects prefab", this);
         }
     }
 }

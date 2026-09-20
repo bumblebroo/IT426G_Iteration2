@@ -655,7 +655,19 @@ MonoBehaviour:
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: 'Player/Interact[/Keyboard/e]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1105133137}
+        m_TargetAssemblyTypeName: PlayerGunHandler, Assembly-CSharp
+        m_MethodName: SwitchGun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
@@ -1978,6 +1990,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1697729874652841738
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2648076606856405038, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.38185987
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648076606856405038, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.21961924
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648076606856405038, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.016073609
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648076606856405038, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648076606856405038, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648076606856405038, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648076606856405038, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648076606856405038, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648076606856405038, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648076606856405038, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011632509089037060, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
+      propertyPath: m_Name
+      value: ShotgunSfx
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3715c82e73e6ead4b89ca2d008109cab, type: 3}
 --- !u!1001 &3892268884033065658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1986,6 +2055,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1316197972013136178, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: scriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: b64678ba654a5a946867bfc15f61cccd, type: 2}
     - target: {fileID: 6535859936239477998, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
       propertyPath: m_Name
       value: Pickup
@@ -2056,3 +2129,4 @@ SceneRoots:
   - {fileID: 1720207901}
   - {fileID: 1791984917}
   - {fileID: 3892268884033065658}
+  - {fileID: 1697729874652841738}
