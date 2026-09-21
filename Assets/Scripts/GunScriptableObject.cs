@@ -26,6 +26,9 @@ public class GunScriptableObject : ScriptableObject
     [Min(0)]
     private float firePointDistance;
 
+    [SerializeField]
+    private float knockBack = 0;
+
 
     [SerializeField]
     private ProjectileScriptableObject projectileScriptableObject;
@@ -39,6 +42,7 @@ public class GunScriptableObject : ScriptableObject
     public float AngleVariation => angleVariation;
     public int BulletAmount => bulletAmount;
     public float FirePointDistance => firePointDistance;
+    public float KnockBack => knockBack;
 
     public ProjectileScriptableObject ProjectileScriptableObject => projectileScriptableObject;
     public GameObject[] ShootEffectPrefabs => shootEffectPrefabs;

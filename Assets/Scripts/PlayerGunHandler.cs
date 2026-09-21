@@ -7,6 +7,11 @@ using UnityEngine.InputSystem;
 public class PlayerGunHandler : MonoBehaviour
 {
     [SerializeField]
+    private PlayerKnockBackState playerKnockBackState;
+
+    [Space]
+
+    [SerializeField]
     private SpriteRenderer playerSprite;
     [SerializeField]
     private SpriteRenderer gunSprite;
@@ -52,6 +57,7 @@ public class PlayerGunHandler : MonoBehaviour
 
     private GunPickup currentAvailablePickup;
 
+    public Vector3 MouseWorldPosition => mouseWorldPosition;
 
     private void Start() {
         StartCoroutine(MoveCamera());
@@ -194,6 +200,10 @@ public class PlayerGunHandler : MonoBehaviour
     }
 
     public void HandleShoot(InputAction.CallbackContext context) {
+        if (!guns[currentGunIndex]) {
+            return;
+        }
+
         if (guns[currentGunIndex].IsFullAuto) {
             if(context.phase == InputActionPhase.Canceled) {
                 autoShoot = false;
@@ -230,6 +240,8 @@ public class PlayerGunHandler : MonoBehaviour
             Projectile projectile = projectileGameObject.GetComponent<Projectile>();
             projectile.Init(guns[currentGunIndex].ProjectileScriptableObject);
         }
+
+        playerKnockBackState.KnockBack(guns[currentGunIndex].KnockBack * -firePoint.right);
 
         timer = 0;
     }

@@ -33,7 +33,11 @@ public class PlayerKnockBackState : PlayerMovementState {
     }
 
     public void KnockBack(Vector2 force) {
+        if(force.magnitude == 0) {
+            return;
+        }
+
         playerMovement.Transition(this);
-        currentForce = force;
+        currentForce = force + (rb.linearVelocity * Mathf.Clamp01(Vector2.Dot(rb.linearVelocity, force)));
     }
 }

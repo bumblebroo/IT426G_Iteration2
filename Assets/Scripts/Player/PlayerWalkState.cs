@@ -27,6 +27,12 @@ public class PlayerWalkState : PlayerMovementState
     [Min(0)]
     private float animationThreshold;
 
+    [SerializeField]
+    private string walkMultiplierParameter;
+
+    [SerializeField]
+    private PlayerGunHandler playerGunHandler;
+
     [Header("Effects")]
     [SerializeField]
     private ParticleSystem walkParticles;
@@ -57,6 +63,13 @@ public class PlayerWalkState : PlayerMovementState
             walkParticles.Stop();
         }
         */
+
+        float diff = transform.position.x - playerGunHandler.MouseWorldPosition.x;
+        if((rb.linearVelocity.x > 0) == (diff > 0)) {
+            animator.SetFloat(walkMultiplierParameter, -1);
+        } else {
+            animator.SetFloat(walkMultiplierParameter, 1);
+        }
 
         float lerpSpeed = accelerationSpeed;
         if(desiredDirection.magnitude == 0) {
