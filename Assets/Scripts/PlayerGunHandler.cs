@@ -58,6 +58,11 @@ public class PlayerGunHandler : MonoBehaviour
 
         guns = new GunScriptableObject[2];
 
+        if (!startingGun) {
+            gunSprite.sprite = null;
+            return;
+        }
+
         guns[0] = startingGun;
         currentGunIndex = 0;
         LoadGun();
@@ -168,6 +173,12 @@ public class PlayerGunHandler : MonoBehaviour
             return;
         }
 
+        if (!guns[currentGunIndex]) {
+            guns[currentGunIndex] = currentAvailablePickup.PickUp();
+            LoadGun();
+            return;
+        }
+
         int otherGun = currentGunIndex == 0 ? 1 : 0;
         if (guns[otherGun] == null) {
             guns[otherGun] = currentAvailablePickup.PickUp();
@@ -197,7 +208,11 @@ public class PlayerGunHandler : MonoBehaviour
         Shoot();
     }
     private void Shoot() {
-        if(timer < 1 / guns[currentGunIndex].FireRate) {
+        if (!guns[currentGunIndex]) {
+            return;
+        }
+
+        if (timer < 1 / guns[currentGunIndex].FireRate) {
             return;
         }
 
