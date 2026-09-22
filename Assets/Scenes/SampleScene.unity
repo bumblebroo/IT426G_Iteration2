@@ -840,8 +840,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationTrigger: knockBack
+  playerMovement: {fileID: 0}
+  animator: {fileID: 0}
+  rb: {fileID: 0}
+  sr: {fileID: 0}
   knockBackSlowdown: 10
   knockBackEndThreshold: 2
+  currentForce: {x: 0, y: 0}
 --- !u!114 &812472534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,14 +860,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationTrigger: dash
+  playerMovement: {fileID: 0}
+  animator: {fileID: 0}
+  rb: {fileID: 0}
+  sr: {fileID: 0}
   dashForce: 12
   dashDuration: 0.4
   dashCooldown: 2
   speedFalloff:
-    serializedVersion: 2
     m_Curve:
-    - serializedVersion: 3
-      time: 0
+    - time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -870,8 +877,7 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
+    - time: 1
       value: 0.4
       inSlope: -1.6181893
       outSlope: -1.6181893
@@ -882,6 +888,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  time: 0
+  targetDir: {x: 0, y: 0}
+  canDash: 1
 --- !u!114 &812472535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,6 +904,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationTrigger: walk
+  playerMovement: {fileID: 0}
+  animator: {fileID: 0}
+  rb: {fileID: 0}
+  sr: {fileID: 0}
   idleParameter: idle
   speed: 4
   accelerationSpeed: 15
@@ -915,9 +928,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7180fad3b1ea5b4695061c9eb94ad7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWalkState: {fileID: 812472535}
-  playerDashState: {fileID: 812472534}
-  playerKnockBackState: {fileID: 812472533}
+  playerWalkState:
+    animationTrigger: walk
+    idleParameter: idle
+    speed: 4
+    accelerationSpeed: 15
+    deAccelerationSpeed: 25
+    animationThreshold: 0.2
+    walkMultiplierParameter: walkAnimationSpeed
+    playerGunHandler: {fileID: 1105133137}
+    walkParticles: {fileID: 0}
+  playerDashState:
+    animationTrigger: dash
+    dashForce: 12
+    dashDuration: 0.4
+    dashCooldown: 2
+    speedFalloff:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -0.04510035
+        outSlope: -0.04510035
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.052792653
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -2.5932515
+        outSlope: -2.5932515
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.013772011
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  playerKnockBackState:
+    animationTrigger: knockBack
+    knockBackSlowdown: 9
+    knockBackEndThreshold: 2
   animator: {fileID: 812472531}
 --- !u!70 &812472537
 CapsuleCollider2D:
@@ -1039,7 +1092,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6840cd0f4fb520940af740d934df57db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerKnockBackState: {fileID: 812472533}
+  playerKnockBackState:
+    animationTrigger: 
+    knockBackSlowdown: 0
+    knockBackEndThreshold: 0
   playerSprite: {fileID: 1746057033}
   gunSprite: {fileID: 299349036}
   cameraMaxDistance: 1.3

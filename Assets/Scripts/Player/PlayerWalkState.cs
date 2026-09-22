@@ -64,7 +64,7 @@ public class PlayerWalkState : PlayerMovementState
         }
         */
 
-        float diff = transform.position.x - playerGunHandler.MouseWorldPosition.x;
+        float diff = playerMovement.transform.position.x - playerGunHandler.MouseWorldPosition.x;
         if((rb.linearVelocity.x > 0) == (diff > 0)) {
             animator.SetFloat(walkMultiplierParameter, -1);
         } else {

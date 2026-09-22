@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public abstract class PlayerMovementState : MonoBehaviour
+public abstract class PlayerMovementState
 {
     [Header("Animator")]
     [SerializeField]

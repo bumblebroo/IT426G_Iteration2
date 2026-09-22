@@ -8,7 +8,7 @@ public class KnockBackOnTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         PlayerKnockBackState playerKnockBackState;
         if(collision.gameObject.TryGetComponent<PlayerKnockBackState>(out playerKnockBackState)) {
-            playerKnockBackState.KnockBack((playerKnockBackState.transform.position - transform.position).normalized * force);
+            playerKnockBackState.KnockBack((collision.gameObject.transform.position - transform.position).normalized * force);
         }
     }
 }

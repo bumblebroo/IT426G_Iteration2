@@ -22,17 +22,17 @@ public class PlayerDashState : PlayerMovementState {
     private AnimationCurve speedFalloff;
 
     private float time = 0;
+    private float lastDash = 0;
     private Vector2 targetDir;
-    private bool canDash = true;
 
-    public bool CanDash => canDash;
+    public bool CanDash => Time.time - lastDash >= dashCooldown;
 
     public override void Initialize(PlayerMovement movement, Animator animator, Rigidbody2D rb) {
         base.Initialize(movement, animator, rb);
     }
 
     public override void EnterState() {
-        if (!canDash) {
+        if (!CanDash) {
             playerMovement.Transition(playerMovement.PlayerWalkState);
         }
 
@@ -53,18 +53,12 @@ public class PlayerDashState : PlayerMovementState {
 
         if(time >= dashDuration) {
             playerMovement.Transition(playerMovement.PlayerWalkState);
-            StartCoroutine(Cooldown());
+            lastDash = Time.time;
             return;
         }
 
         rb.linearVelocity = targetDir * speedFalloff.Evaluate(time / dashDuration) * dashForce;
 
         time += Time.deltaTime;
-    }
-
-    private IEnumerator Cooldown() {
-        canDash = false;
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
     }
 }
