@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 5099376931064509538, guid: d534e82343ca0724183f296f20a1f799, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4788392006702377266, guid: b35fabecceaf59447aae3065e91dfa99, type: 3}
+      objectReference: {fileID: -2883181900359078195, guid: b35fabecceaf59447aae3065e91dfa99, type: 3}
     - target: {fileID: 5676136781330991880, guid: d534e82343ca0724183f296f20a1f799, type: 3}
       propertyPath: m_Offset.x
       value: 0

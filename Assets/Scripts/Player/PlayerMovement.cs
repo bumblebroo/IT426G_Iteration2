@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerWalkState), typeof(PlayerDashState), typeof(PlayerKnockBackState))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]

@@ -178,8 +178,8 @@ TextureImporter:
         y: 674
         width: 48
         height: 18
-      alignment: 9
-      pivot: {x: 0.4, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -200,8 +200,8 @@ TextureImporter:
         y: 674
         width: 30
         height: 16
-      alignment: 9
-      pivot: {x: 0.35, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -222,8 +222,8 @@ TextureImporter:
         y: 673
         width: 48
         height: 17
-      alignment: 9
-      pivot: {x: 0.4, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -244,8 +244,8 @@ TextureImporter:
         y: 673
         width: 44
         height: 15
-      alignment: 9
-      pivot: {x: 0.4, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -262,12 +262,12 @@ TextureImporter:
       name: Prototypes_5
       rect:
         serializedVersion: 2
-        x: 88
-        y: 637
-        width: 24
-        height: 9
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 305
+        y: 656
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -284,12 +284,12 @@ TextureImporter:
       name: Prototypes_6
       rect:
         serializedVersion: 2
-        x: 140
-        y: 634
-        width: 37
-        height: 13
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 326
+        y: 657
+        width: 56
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -306,12 +306,12 @@ TextureImporter:
       name: Prototypes_7
       rect:
         serializedVersion: 2
-        x: 198
-        y: 638
-        width: 53
-        height: 4
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 116
+        y: 656
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -328,12 +328,12 @@ TextureImporter:
       name: Prototypes_8
       rect:
         serializedVersion: 2
-        x: 282
-        y: 630
-        width: 14
-        height: 11
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 180
+        y: 656
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -350,12 +350,12 @@ TextureImporter:
       name: Prototypes_9
       rect:
         serializedVersion: 2
-        x: 87
-        y: 609
-        width: 28
-        height: 23
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 245
+        y: 656
+        width: 5
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -372,12 +372,12 @@ TextureImporter:
       name: Prototypes_10
       rect:
         serializedVersion: 2
-        x: 145
-        y: 603
-        width: 27
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 88
+        y: 637
+        width: 24
+        height: 9
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -394,12 +394,12 @@ TextureImporter:
       name: Prototypes_11
       rect:
         serializedVersion: 2
-        x: 218
-        y: 619
-        width: 14
+        x: 140
+        y: 634
+        width: 37
         height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -416,6 +416,116 @@ TextureImporter:
       name: Prototypes_12
       rect:
         serializedVersion: 2
+        x: 198
+        y: 638
+        width: 53
+        height: 4
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc73a09b063d68a4791c927a252684ed
+      internalID: -8286213331929267660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototypes_13
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 630
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4771cfcfa2656d447a9a8162d2c05690
+      internalID: -814156240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototypes_14
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 609
+        width: 28
+        height: 23
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 289e405c4a597df44a6698d2bfae3b3e
+      internalID: -1935289247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototypes_15
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 603
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aecc8fd1e91dfe845ab348397a8c95e0
+      internalID: 1673441778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototypes_16
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 619
+        width: 14
+        height: 13
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 304c00b68f92a844a83bfdf8b8c9b1f1
+      internalID: 984378126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prototypes_17
+      rect:
+        serializedVersion: 2
         x: 277
         y: 597
         width: 22
@@ -428,8 +538,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc73a09b063d68a4791c927a252684ed
-      internalID: -8286213331929267660
+      spriteID: b8360a3cd0f68674489cd5bec70cda1d
+      internalID: 1995158010
       vertices: []
       indices: 
       edges: []
@@ -453,6 +563,11 @@ TextureImporter:
       Prototypes_10: -1843933010331808019
       Prototypes_11: -2883181900359078195
       Prototypes_12: -8286213331929267660
+      Prototypes_13: -814156240
+      Prototypes_14: -1935289247
+      Prototypes_15: 1673441778
+      Prototypes_16: 984378126
+      Prototypes_17: 1995158010
       Prototypes_2: -2065994477572506732
       Prototypes_3: 5911158098432089090
       Prototypes_4: 8997580011372933333
