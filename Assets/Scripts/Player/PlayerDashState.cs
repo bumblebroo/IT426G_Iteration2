@@ -33,7 +33,7 @@ public class PlayerDashState : PlayerMovementState {
 
     public override void EnterState() {
         if (!CanDash) {
-            playerMovement.Transition(playerMovement.PlayerWalkState);
+            PlayerMovement.Transition(PlayerMovement.PlayerWalkState);
         }
 
         base.EnterState();
@@ -45,19 +45,19 @@ public class PlayerDashState : PlayerMovementState {
     public override void MovementUpdate(Vector2 desiredDirection) {
         if(targetDir == Vector2.zero) {
             if(desiredDirection == Vector2.zero) {
-                playerMovement.Transition(playerMovement.PlayerWalkState);
+                PlayerMovement.Transition(PlayerMovement.PlayerWalkState);
                 return;
             }
             targetDir = desiredDirection;
         }
 
         if(time >= dashDuration) {
-            playerMovement.Transition(playerMovement.PlayerWalkState);
+            PlayerMovement.Transition(PlayerMovement.PlayerWalkState);
             lastDash = Time.time;
             return;
         }
 
-        rb.linearVelocity = targetDir * speedFalloff.Evaluate(time / dashDuration) * dashForce;
+        Rb.linearVelocity = targetDir * speedFalloff.Evaluate(time / dashDuration) * dashForce;
 
         time += Time.deltaTime;
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AmmoPickup : MonoBehaviour
+public class AmmoPickup : LightPickup
 {
     [SerializeField]
     private PlayerData playerData;

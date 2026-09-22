@@ -14,7 +14,9 @@ public class PlayerKnockBackState : PlayerMovementState {
     private Vector2 currentForce;
 
     public override void Initialize(PlayerMovement movement, Animator animator, Rigidbody2D rb) {
+        Debug.Log("Did init for knockbackstate");
         base.Initialize(movement, animator, rb);
+        Debug.Log(PlayerMovement);
     }
     public override void EnterState() {
         base.EnterState();
@@ -24,11 +26,11 @@ public class PlayerKnockBackState : PlayerMovementState {
     }
     public override void MovementUpdate(Vector2 desiredDirection) {
         if(currentForce.magnitude <= knockBackEndThreshold) {
-            playerMovement.Transition(playerMovement.PlayerWalkState);
+            PlayerMovement.Transition(PlayerMovement.PlayerWalkState);
             return;
         }
 
-        rb.linearVelocity = currentForce;
+        Rb.linearVelocity = currentForce;
         currentForce = Vector2.MoveTowards(currentForce, Vector2.zero, knockBackSlowdown * Time.deltaTime);
     }
 
@@ -37,8 +39,11 @@ public class PlayerKnockBackState : PlayerMovementState {
             return;
         }
 
-        Debug.Log(playerMovement);
-        playerMovement.Transition(this);
-        currentForce = force + (rb.linearVelocity * Mathf.Clamp01(Vector2.Dot(rb.linearVelocity, force)));
+        PlayerMovement.Transition(this);
+        currentForce = force + (Rb.linearVelocity * Mathf.Clamp01(Vector2.Dot(Rb.linearVelocity, force)));
+    }
+
+    public void HitWall(Vector2 normal) {
+        currentForce += normal.normalized * currentForce.magnitude;
     }
 }

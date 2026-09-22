@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealthPickup : MonoBehaviour
+public class HealthPickup : LightPickup
 {
     [SerializeField]
     private PlayerData playerData;

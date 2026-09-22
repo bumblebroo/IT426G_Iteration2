@@ -47,14 +47,14 @@ public class PlayerWalkState : PlayerMovementState
         base.Initialize(movement, animator, rb);
     }
     public override void EnterState() {
-        animator.SetTrigger(idleParameter);
+        Animator.SetTrigger(idleParameter);
     }
     public override void ExitState() {
         
     }
     public override void MovementUpdate(Vector2 desiredDirection) {
-        bool walking = Mathf.Abs(rb.linearVelocity.magnitude) >= animationThreshold;
-        animator.SetBool(animationTrigger, walking);
+        bool walking = Mathf.Abs(Rb.linearVelocity.magnitude) >= animationThreshold;
+        Animator.SetBool(animationTrigger, walking);
 
         /*
         if (walking && !walkParticles.isPlaying) {
@@ -64,17 +64,17 @@ public class PlayerWalkState : PlayerMovementState
         }
         */
 
-        float diff = playerMovement.transform.position.x - playerGunHandler.MouseWorldPosition.x;
-        if((rb.linearVelocity.x > 0) == (diff > 0)) {
-            animator.SetFloat(walkMultiplierParameter, -1);
+        float diff = PlayerMovement.transform.position.x - playerGunHandler.MouseWorldPosition.x;
+        if((Rb.linearVelocity.x > 0) == (diff > 0)) {
+            Animator.SetFloat(walkMultiplierParameter, -1);
         } else {
-            animator.SetFloat(walkMultiplierParameter, 1);
+            Animator.SetFloat(walkMultiplierParameter, 1);
         }
 
         float lerpSpeed = accelerationSpeed;
         if(desiredDirection.magnitude == 0) {
             lerpSpeed = deAccelerationSpeed;
         }
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, speed * desiredDirection, lerpSpeed * Time.deltaTime);
+        Rb.linearVelocity = Vector2.Lerp(Rb.linearVelocity, speed * desiredDirection, lerpSpeed * Time.deltaTime);
     }
 }

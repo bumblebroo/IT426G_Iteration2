@@ -8,10 +8,15 @@ public abstract class PlayerMovementState
     [SerializeField]
     protected string animationTrigger;
 
-    protected PlayerMovement playerMovement;
-    protected Animator animator;
-    protected Rigidbody2D rb;
-    protected SpriteRenderer sr;
+    private PlayerMovement playerMovement;
+    private Animator animator;
+    private Rigidbody2D rb;
+    private SpriteRenderer sr;
+
+    protected PlayerMovement PlayerMovement => playerMovement;
+    protected Animator Animator => animator;
+    protected Rigidbody2D Rb => rb;
+    protected SpriteRenderer Sr => sr;
 
     public virtual void Initialize(PlayerMovement movement, Animator animator, Rigidbody2D rb) {
         playerMovement = movement;

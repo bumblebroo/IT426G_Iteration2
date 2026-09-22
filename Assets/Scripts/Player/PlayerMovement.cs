@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private IEnumerator DoMovement() {
+
         while (true) {
             yield return new WaitForEndOfFrame();
 
@@ -86,5 +87,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Transition(playerDashState);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if(currentMovementState != playerKnockBackState) {
+            return;
+        }
+
+        playerKnockBackState.HitWall(collision.GetContact(0).normal);
     }
 }
