@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 299349035}
   - component: {fileID: 299349036}
   m_Layer: 3
-  m_Name: Prototypes_2
+  m_Name: GunSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,7 +384,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: -7381559571022557699, guid: b35fabecceaf59447aae3065e91dfa99, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -392,7 +392,7 @@ SpriteRenderer:
   m_Size: {x: 0.46875, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &403180712
