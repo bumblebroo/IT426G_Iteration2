@@ -33,6 +33,12 @@ public class PlayerData : ScriptableObject
     [HideInInspector]
     public UnityEvent<int> bombCountUpdated;
 
+    [HideInInspector]
+    public  GunScriptableObject[] guns;
+
+    [HideInInspector]
+    public int currentGunIndex;
+
     public int MaxHealth => maxHealth;
 
     public int CurrentHealth {
@@ -85,7 +91,14 @@ public class PlayerData : ScriptableObject
         }
     }
 
-    public void ResetHealth() {
+    public void ResetData() {
         CurrentHealth = maxHealth;
+        shellCount = 0;
+        bulletCount = 0;
+        boltCount = 0;
+        bombCount = 0;
+
+        guns = new GunScriptableObject[2];
+        currentGunIndex = 0;
     }
 }

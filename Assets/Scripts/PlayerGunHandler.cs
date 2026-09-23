@@ -9,6 +9,9 @@ public class PlayerGunHandler : MonoBehaviour
     [SerializeField]
     private PlayerMovement playerMovement;
 
+    [SerializeField]
+    private PlayerData playerData;
+
     [Space]
 
     [SerializeField]
@@ -34,14 +37,6 @@ public class PlayerGunHandler : MonoBehaviour
 
     private bool autoShoot = false;
 
-
-    [SerializeField]
-    private GunScriptableObject startingGun;
-
-    private GunScriptableObject[] guns;
-
-    private int currentGunIndex;
-
     private float timer = 0;
 
     [Space]
@@ -62,16 +57,7 @@ public class PlayerGunHandler : MonoBehaviour
     private void Start() {
         StartCoroutine(MoveCamera());
 
-        guns = new GunScriptableObject[2];
-
-        if (!startingGun) {
-            gunSprite.sprite = null;
-            return;
-        }
-
-        guns[0] = startingGun;
-        currentGunIndex = 0;
-        LoadGun();
+        gunSprite.sprite = null;
     }
 
     private IEnumerator MoveCamera() {
@@ -149,23 +135,24 @@ public class PlayerGunHandler : MonoBehaviour
     }
 
     public void SwitchGun() {
-        int otherGunIndex = currentGunIndex == 0 ? 1 : 0;
-        if (guns[otherGunIndex] == null) {
+        int otherGunIndex = playerData.currentGunIndex == 0 ? 1 : 0;
+        if (playerData.guns[otherGunIndex] == null) {
             return;
         }
 
-        currentGunIndex = otherGunIndex;
+        autoShoot = false;
+        playerData.currentGunIndex = otherGunIndex;
         LoadGun();
     }
 
     private void LoadGun() {
-        if (guns[currentGunIndex] == null) {
+        if (playerData.guns[playerData.currentGunIndex] == null) {
             Debug.Log("Missing gun", this);
             return;
         }
 
-        gunSprite.sprite = guns[currentGunIndex].Sprite;
-        firePoint.localPosition = new Vector2(guns[currentGunIndex].FirePointDistance, firePoint.localPosition.y);
+        gunSprite.sprite = playerData.guns[playerData.currentGunIndex].Sprite;
+        firePoint.localPosition = new Vector2(playerData.guns[playerData.currentGunIndex].FirePointDistance, firePoint.localPosition.y);
 
         // play sound
     }
@@ -179,32 +166,32 @@ public class PlayerGunHandler : MonoBehaviour
             return;
         }
 
-        if (!guns[currentGunIndex]) {
-            guns[currentGunIndex] = currentAvailablePickup.PickUp();
+        if (!playerData.guns[playerData.currentGunIndex]) {
+            playerData.guns[playerData.currentGunIndex] = currentAvailablePickup.PickUp();
             LoadGun();
             return;
         }
 
-        int otherGun = currentGunIndex == 0 ? 1 : 0;
-        if (guns[otherGun] == null) {
-            guns[otherGun] = currentAvailablePickup.PickUp();
+        int otherGun = playerData.currentGunIndex == 0 ? 1 : 0;
+        if (playerData.guns[otherGun] == null) {
+            playerData.guns[otherGun] = currentAvailablePickup.PickUp();
             return;
         }
 
         GameObject droppedGunGameObject = Instantiate(dropPrefab, transform.position, transform.rotation);
         GunPickup gunPickupComponent = droppedGunGameObject.GetComponent<GunPickup>();
-        gunPickupComponent.Init(guns[currentGunIndex]);
+        gunPickupComponent.Init(playerData.guns[playerData.currentGunIndex]);
 
-        guns[currentGunIndex] = currentAvailablePickup.PickUp();
+        playerData.guns[playerData.currentGunIndex] = currentAvailablePickup.PickUp();
         LoadGun();
     }
 
     public void HandleShoot(InputAction.CallbackContext context) {
-        if (!guns[currentGunIndex]) {
+        if (!playerData.guns[playerData.currentGunIndex]) {
             return;
         }
 
-        if (guns[currentGunIndex].IsFullAuto) {
+        if (playerData.guns[playerData.currentGunIndex].IsFullAuto) {
             if(context.phase == InputActionPhase.Canceled) {
                 autoShoot = false;
                 return;
@@ -218,32 +205,71 @@ public class PlayerGunHandler : MonoBehaviour
         Shoot();
     }
     private void Shoot() {
-        if (!guns[currentGunIndex]) {
+        if (!playerData.guns[playerData.currentGunIndex]) {
             return;
         }
 
-        if (timer < 1 / guns[currentGunIndex].FireRate) {
+        if (!HasAmmo()) {
             return;
         }
 
-        for (int i = 0; i < guns[currentGunIndex].ShootEffectPrefabs.Length; i++) {
-            Instantiate(guns[currentGunIndex].ShootEffectPrefabs[i], firePoint.position, firePoint.rotation);
+        if (timer < 1 / playerData.guns[playerData.currentGunIndex].FireRate) {
+            return;
         }
 
-        for (int i = 0; i < guns[currentGunIndex].BulletAmount; i++) {
-            GameObject projectileGameObject = Instantiate(guns[currentGunIndex].ProjectileScriptableObject.Prefab, firePoint.position, firePoint.rotation);
+        for (int i = 0; i < playerData.guns[playerData.currentGunIndex].ShootEffectPrefabs.Length; i++) {
+            Instantiate(playerData.guns[playerData.currentGunIndex].ShootEffectPrefabs[i], firePoint.position, firePoint.rotation);
+        }
 
-            float angle = Random.Range(-guns[currentGunIndex].AngleVariation, guns[currentGunIndex].AngleVariation);
+        for (int i = 0; i < playerData.guns[playerData.currentGunIndex].BulletAmount; i++) {
+            GameObject projectileGameObject = Instantiate(playerData.guns[playerData.currentGunIndex].ProjectileScriptableObject.Prefab, firePoint.position, firePoint.rotation);
+
+            float angle = Random.Range(-playerData.guns[playerData.currentGunIndex].AngleVariation, playerData.guns[playerData.currentGunIndex].AngleVariation);
             angle *= Mathf.Deg2Rad;
             projectileGameObject.transform.rotation *= new Quaternion(0, 0, Mathf.Sin(angle / 2), Mathf.Cos(angle / 2));
 
             Projectile projectile = projectileGameObject.GetComponent<Projectile>();
-            projectile.Init(guns[currentGunIndex].ProjectileScriptableObject);
+            projectile.Init(playerData.guns[playerData.currentGunIndex].ProjectileScriptableObject);
         }
 
-        playerMovement.PlayerKnockBackState.KnockBack(guns[currentGunIndex].KnockBack * -firePoint.right);
-
+        playerMovement.PlayerKnockBackState.KnockBack(playerData.guns[playerData.currentGunIndex].KnockBack * -firePoint.right);
+        ReduceAmmo();
         timer = 0;
+    }
+
+    private bool HasAmmo() {
+        switch (playerData.guns[playerData.currentGunIndex].AmmoType) {
+            case AmmoEnum.Shell:
+                return playerData.ShellCount > 0;
+            case AmmoEnum.Bullet:
+                return playerData.BulletCount > 0;
+            case AmmoEnum.Bolt:
+                return playerData.BoltCount > 0;
+            case AmmoEnum.Bomb:
+                return playerData.BombCount > 0;
+            default:
+                return false;
+        }
+    }
+
+    private void ReduceAmmo() {
+        switch (playerData.guns[playerData.currentGunIndex].AmmoType) {
+            case AmmoEnum.Shell:
+                playerData.ShellCount--;
+                break;
+            case AmmoEnum.Bullet:
+                playerData.BulletCount--;
+                break;
+            case AmmoEnum.Bolt:
+                playerData.BoltCount--;
+                break;
+            case AmmoEnum.Bomb:
+                playerData.BombCount--;
+                break;
+            default:
+                Debug.LogError("Missing enum implementation");
+                break;
+        }
     }
 
     private void OnDrawGizmos() {
