@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private static PlayerMovement instance;
+
     [SerializeField]
     private PlayerWalkState playerWalkState;
     [SerializeField]
@@ -23,6 +25,18 @@ public class PlayerMovement : MonoBehaviour
     public PlayerWalkState PlayerWalkState => playerWalkState;
     public PlayerDashState PlayerDashState => playerDashState;
     public PlayerKnockBackState PlayerKnockBackState => playerKnockBackState;
+
+
+    public static PlayerMovement Instance => instance;
+
+    private void Awake() {
+        if(instance == null) {
+            instance = this;
+            return;
+        }
+
+        Destroy(this.gameObject);
+    }
 
     private void OnValidate() {
         if (!animator) {

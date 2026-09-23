@@ -7,9 +7,6 @@ using UnityEngine.InputSystem;
 public class PlayerGunHandler : MonoBehaviour
 {
     [SerializeField]
-    private PlayerMovement playerMovement;
-
-    [SerializeField]
     private PlayerData playerData;
 
     [Space]
@@ -232,7 +229,7 @@ public class PlayerGunHandler : MonoBehaviour
             projectile.Init(playerData.guns[playerData.currentGunIndex].ProjectileScriptableObject);
         }
 
-        playerMovement.PlayerKnockBackState.KnockBack(playerData.guns[playerData.currentGunIndex].KnockBack * -firePoint.right);
+        PlayerMovement.Instance.PlayerKnockBackState.KnockBack(playerData.guns[playerData.currentGunIndex].KnockBack * -firePoint.right);
         ReduceAmmo();
         timer = 0;
     }
