@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 
 public class Projectile : MonoBehaviour
 {
@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
 
     private int amountHit = 0;
+
+    private HashSet<GameObject> hitGameObjects = new HashSet<GameObject>();
     
     public void Init(ProjectileScriptableObject scriptableObject) {
         this.scriptableObject = scriptableObject;
@@ -17,6 +19,11 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        if (hitGameObjects.Contains(collision.gameObject)) {
+            return;
+        }
+        hitGameObjects.Add(collision.gameObject);
+
         EnemyHealth enemy;
         if(!collision.gameObject.TryGetComponent<EnemyHealth>(out enemy)) {
             Destroy(this.gameObject);

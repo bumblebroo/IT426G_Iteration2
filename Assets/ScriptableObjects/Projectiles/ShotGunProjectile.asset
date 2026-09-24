@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ShotGunProjectile
   m_EditorClassIdentifier: 
   prefab: {fileID: 1077615403819633365, guid: d534e82343ca0724183f296f20a1f799, type: 3}
-  damage: 3
+  damage: 1
   speed: 30
   pierceAmount: 1

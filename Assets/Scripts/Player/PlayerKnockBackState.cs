@@ -14,9 +14,7 @@ public class PlayerKnockBackState : PlayerMovementState {
     private Vector2 currentForce;
 
     public override void Initialize(PlayerMovement movement, Animator animator, Rigidbody2D rb) {
-        Debug.Log("Did init for knockbackstate");
         base.Initialize(movement, animator, rb);
-        Debug.Log(PlayerMovement);
     }
     public override void EnterState() {
         base.EnterState();

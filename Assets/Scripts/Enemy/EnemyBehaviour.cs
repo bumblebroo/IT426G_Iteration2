@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour
+public abstract class EnemyBehaviour : MonoBehaviour
 {
-    private EnemyState currentBehaviour;
+    protected EnemyState currentState;
 
     [SerializeField]
     private Animator animator;
@@ -21,32 +21,65 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     private float attackRange;
 
-    protected bool CanSeePlayer {
+    [SerializeField]
+    private float playerPosMargin;
+
+    private Vector2 playerPosKnowledge;
+
+    public Animator Animator => animator;
+    public SpriteRenderer Sr => sr;
+    public Rigidbody2D Rb => rb;
+
+    public bool CanSeePlayer {
         get {
-            return Physics2D.Linecast(transform.position, PlayerMovement.Instance.transform.position, lookLayers);
+            return !Physics2D.Linecast(transform.position, PlayerMovement.Instance.transform.position, lookLayers);
         }
     }
 
-    protected bool CanAttack {
+    public bool CanFindPlayer {
+        get {
+            if (CanSeePlayer) {
+                playerPosKnowledge = PlayerMovement.Instance.transform.position;
+                return true;
+            }
+
+            if(Vector2.Distance(transform.position, playerPosKnowledge) > playerPosMargin) {
+                return true;
+            }
+
+            return false;
+        }
+    }
+
+    public Vector2 PlayerPosKnowledge => playerPosKnowledge;
+
+    public bool CanAttack {
         get {
             return Vector2.Distance(transform.position, PlayerMovement.Instance.transform.position) <= attackRange;
         }
     }
 
     protected virtual void Start()
-    {
-        currentBehaviour.Initialize(this, animator, rb, sr);
-        currentBehaviour.EnterState();
+    {       
+        currentState.EnterState();
     }
 
     protected virtual void Update()
     {
-        currentBehaviour.EnemyUpdate();
+        HandleTransitions();
+        currentState.EnemyUpdate();
     }
 
+    protected abstract void HandleTransitions();
+
     protected virtual void Transition(EnemyState nextEnemyState) {
-        currentBehaviour.ExitState();
-        currentBehaviour = nextEnemyState;
-        currentBehaviour.EnterState();
+        currentState.ExitState();
+        currentState = nextEnemyState;
+        currentState.EnterState();
+    }
+
+    public void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class EnemyWanderState : EnemyState
 {
     [SerializeField]
@@ -17,11 +19,13 @@ public class EnemyWanderState : EnemyState
     public override void EnterState() {
         base.EnterState();
         newDirTimestamp = 0;
+        dir = new Vector2(UnityEngine.Random.value - 0.5f, UnityEngine.Random.value - 0.5f).normalized;
     }
 
     public override void EnemyUpdate() {
-        if(newDirTimestamp - Time.time > newDirCD) {
-            dir = new Vector2(Random.value / 2, Random.value / 2).normalized;
+        if(Time.time - newDirTimestamp > newDirCD) {
+            dir = new Vector2(UnityEngine.Random.value - 0.5f, UnityEngine.Random.value - 0.5f).normalized;
+            newDirTimestamp = Time.time;
         }
 
         Move(dir, speed, acceleration);

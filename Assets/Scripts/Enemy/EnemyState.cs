@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public abstract class EnemyState
 {
     private EnemyBehaviour enemyBehaviour;
@@ -29,7 +31,7 @@ public abstract class EnemyState
     public abstract void EnemyUpdate();
 
     protected virtual void Move(Vector2 desiredDirection, float speed, float acceleration) {
-        rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, desiredDirection * speed, acceleration * Time.deltaTime);
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, desiredDirection * speed, acceleration * Time.deltaTime);
         if(rb.linearVelocity.x > 0) {
             sr.flipX = true;
         } else if(rb.linearVelocity.x < 0){

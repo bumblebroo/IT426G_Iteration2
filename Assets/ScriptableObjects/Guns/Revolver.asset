@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   sprite: {fileID: -2065994477572506732, guid: b35fabecceaf59447aae3065e91dfa99, type: 3}
-  fireRate: 8
+  fireRate: 4
   isFullAuto: 0
-  angleVariation: 3
+  angleVariation: 5
   bulletAmount: 1
   firePointDistance: 0.35
-  knockBack: 3
+  knockBack: 0
+  ammoType: 1
   projectileScriptableObject: {fileID: 11400000, guid: 926d5106365990243821c6681a1b5e2f, type: 2}
   shootEffectPrefabs: []
