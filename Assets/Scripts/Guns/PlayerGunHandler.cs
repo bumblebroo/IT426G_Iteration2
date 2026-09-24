@@ -111,8 +111,11 @@ public class PlayerGunHandler : MonoBehaviour
                 }
 
                 currentAvailablePickup = gunPickupComponent;
-                currentAvailablePickup.EnableHighlight();
                 shortestDist = dist;
+            }
+
+            if (currentAvailablePickup) {
+                currentAvailablePickup.EnableHighlight();
             }
 
             yield return new WaitForEndOfFrame();

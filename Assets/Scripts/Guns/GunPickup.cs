@@ -18,6 +18,7 @@ public class GunPickup : MonoBehaviour
         if (scriptableObject) {
             sr.sprite = scriptableObject.Sprite;
         }
+        DisableHighLight();
     }
 
     public void Init(GunScriptableObject scriptableObject) {

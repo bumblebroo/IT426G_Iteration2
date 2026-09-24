@@ -950,6 +950,10 @@ PrefabInstance:
       propertyPath: scriptableObject
       value: 
       objectReference: {fileID: 11400000, guid: a54f79ca0b6c2e64e96f79ac0b5b45ea, type: 2}
+    - target: {fileID: 5537693275855835441, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6535859936239477998, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
       propertyPath: m_Name
       value: Pickup (1)
@@ -4162,6 +4166,10 @@ PrefabInstance:
       propertyPath: scriptableObject
       value: 
       objectReference: {fileID: 11400000, guid: 19322220a1dabc04f95c8bc3ba7f5073, type: 2}
+    - target: {fileID: 5537693275855835441, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6535859936239477998, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
       propertyPath: m_Name
       value: Pickup (2)
@@ -5328,6 +5336,10 @@ PrefabInstance:
       propertyPath: scriptableObject
       value: 
       objectReference: {fileID: 11400000, guid: b64678ba654a5a946867bfc15f61cccd, type: 2}
+    - target: {fileID: 5537693275855835441, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6535859936239477998, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
       propertyPath: m_Name
       value: Pickup

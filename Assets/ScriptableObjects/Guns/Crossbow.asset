@@ -18,6 +18,8 @@ MonoBehaviour:
   angleVariation: 1
   bulletAmount: 1
   firePointDistance: 0.45
+  knockBack: 0
+  ammoType: 2
   projectileScriptableObject: {fileID: 11400000, guid: 7f3a359b9031ec04ba534ccf607999f6, type: 2}
   shootEffectPrefabs:
   - {fileID: 4839426205827599906, guid: 3238f6cc43ba4b74599a0d201fb37e4d, type: 3}
