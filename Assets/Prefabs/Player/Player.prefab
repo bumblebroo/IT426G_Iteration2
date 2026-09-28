@@ -818,7 +818,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   playerKnockBackState:
     animationTrigger: knockBack
-    knockBackSlowdown: 9
+    knockBackSlowdown: 12
     knockBackEndThreshold: 2
   animator: {fileID: 8099477784940250990}
 --- !u!70 &6254347022808634682
@@ -908,3 +908,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 5d07978021e8e17449f4602c251d2e5f, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []

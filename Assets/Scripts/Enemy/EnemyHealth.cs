@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
     private Material currentMaterial;
 
     [SerializeField]
-    private float flashDuration;
+    private float flashDuration = 0.05f;
 
     [SerializeField]
     private SpriteRenderer sr;
