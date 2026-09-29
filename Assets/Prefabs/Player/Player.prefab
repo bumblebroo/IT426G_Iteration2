@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5193497136787855553}
   - component: {fileID: 7161641922165861487}
+  - component: {fileID: 7132154783499354055}
   m_Layer: 3
   m_Name: PlayerGunHandler
   m_TagString: Untagged
@@ -80,6 +81,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 5d07978021e8e17449f4602c251d2e5f, type: 2}
+  crosshair: {fileID: 0}
+  impulseSource: {fileID: 7132154783499354055}
   playerSprite: {fileID: 1446814917025624718}
   gunSprite: {fileID: 8440294283046348776}
   shootFlashPrefab: {fileID: 538533385537681981, guid: 35f7567a0e15fdb4fa69b7e688bb4ac9, type: 3}
@@ -93,6 +96,77 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   dropPrefab: {fileID: 6535859936239477998, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+--- !u!114 &7132154783499354055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132661258157290804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 0
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.9928589
+        inSlope: -1.8671993
+        outSlope: -1.8671993
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.030604437
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.3
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &1508949902738521827
 GameObject:
   m_ObjectHideFlags: 0

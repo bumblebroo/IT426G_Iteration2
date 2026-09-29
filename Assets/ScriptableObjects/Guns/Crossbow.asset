@@ -19,6 +19,7 @@ MonoBehaviour:
   bulletAmount: 1
   firePointDistance: 0.45
   knockBack: 0
+  cameraShake: 0.1
   ammoType: 2
   projectileScriptableObject: {fileID: 11400000, guid: 7f3a359b9031ec04ba534ccf607999f6, type: 2}
   shootEffectPrefabs:

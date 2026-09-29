@@ -27,7 +27,12 @@ public class GunScriptableObject : ScriptableObject
     private float firePointDistance;
 
     [SerializeField]
+    [Min(0)]
     private float knockBack = 0;
+
+    [SerializeField]
+    [Min(0)]
+    private float cameraShake = 0.2f;
 
     [SerializeField]
     private AmmoEnum ammoType;
@@ -45,6 +50,7 @@ public class GunScriptableObject : ScriptableObject
     public int BulletAmount => bulletAmount;
     public float FirePointDistance => firePointDistance;
     public float KnockBack => knockBack;
+    public float CameraShake => cameraShake;
     public AmmoEnum AmmoType => ammoType;
 
     public ProjectileScriptableObject ProjectileScriptableObject => projectileScriptableObject;

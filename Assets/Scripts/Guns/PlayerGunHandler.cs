@@ -1,6 +1,5 @@
 using System.Collections;
-using System.Linq;
-using UnityEditor.ShaderGraph.Internal;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +9,12 @@ public class PlayerGunHandler : MonoBehaviour
     private PlayerData playerData;
 
     [Space]
+
+    [SerializeField]
+    private Transform crosshair;
+
+    [SerializeField]
+    private CinemachineImpulseSource impulseSource;
 
     [SerializeField]
     private SpriteRenderer playerSprite;
@@ -64,6 +69,8 @@ public class PlayerGunHandler : MonoBehaviour
             mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
             Vector2 mouseDir = mouseWorldPosition - (Vector2)transform.position;
             mouseDir *= percentDistance;
+
+            crosshair.position = MouseWorldPosition;
 
             Vector2 targetPos = mouseDir;
             if(mouseDir.magnitude > cameraMaxDistance) {
@@ -234,6 +241,7 @@ public class PlayerGunHandler : MonoBehaviour
             projectile.Init(playerData.guns[playerData.currentGunIndex].ProjectileScriptableObject);
         }
 
+        impulseSource.GenerateImpulseWithVelocity(-firePoint.right * playerData.guns[playerData.currentGunIndex].CameraShake);
         Instantiate(shootFlashPrefab, firePoint.position, firePoint.rotation);
 
         PlayerMovement.Instance.PlayerKnockBackState.KnockBack(playerData.guns[playerData.currentGunIndex].KnockBack * -firePoint.right);
