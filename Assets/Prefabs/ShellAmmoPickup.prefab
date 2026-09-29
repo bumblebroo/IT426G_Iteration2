@@ -140,4 +140,4 @@ MonoBehaviour:
   speed: 10
   playerData: {fileID: 11400000, guid: 5d07978021e8e17449f4602c251d2e5f, type: 2}
   ammoType: 0
-  amount: 20
+  amount: 8

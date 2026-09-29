@@ -58,6 +58,10 @@ public class PlayerGunHandler : MonoBehaviour
 
     public Vector3 MouseWorldPosition => mouseWorldPosition;
 
+    public void Die() {
+        StopCoroutine(MoveCamera());
+    }
+
     private void Start() {
         StartCoroutine(MoveCamera());
 

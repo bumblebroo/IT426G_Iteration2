@@ -17,6 +17,10 @@ PrefabInstance:
       value: BombAmmoPickup
       objectReference: {fileID: 0}
     - target: {fileID: 4571060247534367670, guid: 23a57715b345dc54e94a8c9478d5e698, type: 3}
+      propertyPath: amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571060247534367670, guid: 23a57715b345dc54e94a8c9478d5e698, type: 3}
       propertyPath: ammoType
       value: 3
       objectReference: {fileID: 0}
