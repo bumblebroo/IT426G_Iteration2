@@ -14,7 +14,6 @@ public class EnemyWaitState : EnemyState
         startTimestamp = Time.time;
     }
     public override void EnemyUpdate() {
-        // Do nothing
+        Move(Vector2.zero, 100, 100);
     }
-
 }

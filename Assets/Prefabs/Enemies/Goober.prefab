@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9050557260048684362}
   - component: {fileID: 7155783083615790995}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,8 @@ GameObject:
   - component: {fileID: 457743590111798299}
   - component: {fileID: 8731107108118430261}
   - component: {fileID: 2026286444905012461}
-  m_Layer: 0
+  - component: {fileID: 2173603618050250765}
+  m_Layer: 10
   m_Name: Goober
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +223,7 @@ MonoBehaviour:
     attackCollider: {fileID: 7155783083615790995}
   chaseState:
     animationTrigger: chase
-    speed: 2
+    speed: 3.5
     acceleration: 50
   confusedState:
     animationTrigger: confused
@@ -281,7 +282,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -299,5 +300,41 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: -0.05}
+  m_Radius: 0.4
+--- !u!58 &2173603618050250765
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204397136301709037}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 1023
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.05}
+  m_Radius: 0.2

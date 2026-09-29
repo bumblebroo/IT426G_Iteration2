@@ -15,6 +15,8 @@ public abstract class EnemyState
 
     protected EnemyBehaviour EnemyBehaviour => enemyBehaviour;
     protected Animator Animator => animator;
+    protected Rigidbody2D Rb => rb;
+    protected SpriteRenderer Sr => sr;
 
     public virtual void Initialize(EnemyBehaviour enemyBehaviour, Animator animator, Rigidbody2D rb, SpriteRenderer sr) {
         this.enemyBehaviour = enemyBehaviour;
@@ -32,9 +34,12 @@ public abstract class EnemyState
 
     protected virtual void Move(Vector2 desiredDirection, float speed, float acceleration) {
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, desiredDirection * speed, acceleration * Time.deltaTime);
-        if(rb.linearVelocity.x > 0) {
+    }
+
+    protected virtual void VelocityFlipSprite() {
+        if (rb.linearVelocity.x > 0) {
             sr.flipX = true;
-        } else if(rb.linearVelocity.x < 0){
+        } else if (rb.linearVelocity.x < 0) {
             sr.flipX = false;
         }
     }

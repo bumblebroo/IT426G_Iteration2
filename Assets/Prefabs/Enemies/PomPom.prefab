@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1230646014419554948}
   - component: {fileID: 6941001764946582645}
   - component: {fileID: 4121940762372692120}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PomPom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ MonoBehaviour:
     newDirCD: 2
   chaseState:
     animationTrigger: 
-    speed: 4
+    speed: 5.6
     acceleration: 30
   selfDestructState:
     animationTrigger: 
