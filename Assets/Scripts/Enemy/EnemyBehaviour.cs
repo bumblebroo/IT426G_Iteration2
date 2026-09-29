@@ -24,6 +24,9 @@ public abstract class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     private float playerPosMargin;
 
+    [SerializeField]
+    private float maxLookDistance = 5f;
+
     private Vector2 playerPosKnowledge;
 
     public Animator Animator => animator;
@@ -32,6 +35,9 @@ public abstract class EnemyBehaviour : MonoBehaviour
 
     public bool CanSeePlayer {
         get {
+            if(Vector2.Distance(PlayerMovement.Instance.gameObject.transform.position, transform.position) > maxLookDistance) {
+                return false;
+            }
             return !Physics2D.Linecast(transform.position, PlayerMovement.Instance.transform.position, lookLayers);
         }
     }
@@ -81,5 +87,8 @@ public abstract class EnemyBehaviour : MonoBehaviour
     public void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, maxLookDistance);
     }
 }
