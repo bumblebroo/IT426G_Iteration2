@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        enemy.TakeDamage(scriptableObject.Damage);
+        enemy.TakeDamage(scriptableObject.Damage, this.gameObject);
 
         amountHit += 1;
 

@@ -227,3 +227,4 @@ MonoBehaviour:
   hitflashMaterial: {fileID: 2100000, guid: 33a9cb915f9622f4b8d0c5e25a73a72c, type: 2}
   flashDuration: 0.05
   sr: {fileID: 7666275791080821987}
+  hurtParticlePrefab: {fileID: 8420859654957483863, guid: 981c401ac318f0e49aed6a0dc738487e, type: 3}

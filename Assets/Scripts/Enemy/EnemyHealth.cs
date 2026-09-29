@@ -19,6 +19,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private SpriteRenderer sr;
 
+    [SerializeField]
+    private GameObject hurtParticlePrefab;
+
     public float StartHealth => startHealth;
     public float CurrentHealth => currentHealth;
 
@@ -27,8 +30,16 @@ public class EnemyHealth : MonoBehaviour
         currentMaterial = sr.material;
     }
 
-    public void TakeDamage(float damage) {
+    public void TakeDamage(float damage, GameObject source) {
         currentHealth -= damage;
+
+        if (hurtParticlePrefab) {
+            Vector2 dir = source.transform.position - transform.position;
+            dir.Normalize();
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            GameObject particles = Instantiate(hurtParticlePrefab, transform.position, Quaternion.identity);
+            particles.transform.rotation *= Quaternion.AngleAxis(angle, Vector3.forward);
+        }
 
         StartCoroutine(flash());
 
