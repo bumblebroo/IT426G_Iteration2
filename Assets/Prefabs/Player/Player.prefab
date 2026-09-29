@@ -82,6 +82,7 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 5d07978021e8e17449f4602c251d2e5f, type: 2}
   playerSprite: {fileID: 1446814917025624718}
   gunSprite: {fileID: 8440294283046348776}
+  shootFlashPrefab: {fileID: 538533385537681981, guid: 35f7567a0e15fdb4fa69b7e688bb4ac9, type: 3}
   cameraMaxDistance: 1.3
   percentDistance: 0.4
   cameraTarget: {fileID: 6395863635667376065}

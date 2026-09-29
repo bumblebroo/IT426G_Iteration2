@@ -16,6 +16,8 @@ public class PlayerGunHandler : MonoBehaviour
     [SerializeField]
     private SpriteRenderer gunSprite;
 
+    [SerializeField]
+    private GameObject shootFlashPrefab;
 
     [SerializeField]
     private float cameraMaxDistance;
@@ -231,6 +233,8 @@ public class PlayerGunHandler : MonoBehaviour
             Projectile projectile = projectileGameObject.GetComponent<Projectile>();
             projectile.Init(playerData.guns[playerData.currentGunIndex].ProjectileScriptableObject);
         }
+
+        Instantiate(shootFlashPrefab, firePoint.position, firePoint.rotation);
 
         PlayerMovement.Instance.PlayerKnockBackState.KnockBack(playerData.guns[playerData.currentGunIndex].KnockBack * -firePoint.right);
         ReduceAmmo();
