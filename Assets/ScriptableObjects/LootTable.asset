@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3bfd18a58829849b47c04d5981e951, type: 3}
+  m_Name: LootTable
+  m_EditorClassIdentifier: 
+  lootInfos:
+  - prefab: {fileID: 7584639513346612328, guid: 152c59f7e3ade7541ae5f656c952da2b, type: 3}
+    probability: 1
+  - prefab: {fileID: 3891686349756810270, guid: b4abca57e084f9c468badd16ce27f653, type: 3}
+    probability: 1
+  - prefab: {fileID: 6535859936239477998, guid: bbfa2512f844a574684b7dda53c3b8c0, type: 3}
+    probability: 1
+  - prefab: {fileID: 4333374871781757490, guid: 23a57715b345dc54e94a8c9478d5e698, type: 3}
+    probability: 4
+  - prefab: {fileID: 1862137645895922748, guid: 703ac6037fc4a0c498fe11f323d48eac, type: 3}
+    probability: 5
+  - prefab: {fileID: 148835722515372996, guid: 5c84b33b92f4c8b4d9b61719858ab710, type: 3}
+    probability: 4

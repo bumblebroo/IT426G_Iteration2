@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8246973777425969051}
   - component: {fileID: 4571060247534367670}
   m_Layer: 9
-  m_Name: AmmoPickup
+  m_Name: ShellAmmoPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,5 +139,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   playerData: {fileID: 11400000, guid: 5d07978021e8e17449f4602c251d2e5f, type: 2}
-  ammoType: 1
+  ammoType: 0
   amount: 20
