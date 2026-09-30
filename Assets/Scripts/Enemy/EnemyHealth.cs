@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -22,6 +23,15 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private GameObject hurtParticlePrefab;
 
+    [Space]
+
+    [SerializeField]
+    private LootTable lootTable;
+
+    [Space]
+
+    public UnityEvent OnHit;
+
     public float StartHealth => startHealth;
     public float CurrentHealth => currentHealth;
 
@@ -43,7 +53,12 @@ public class EnemyHealth : MonoBehaviour
 
         StartCoroutine(flash());
 
+        OnHit?.Invoke();
+
         if(currentHealth <= 0) {
+            if (lootTable) {
+                Instantiate(lootTable.GetPrefab(), transform.position, Quaternion.identity);
+            }
             Destroy(this.gameObject);
         }
     }

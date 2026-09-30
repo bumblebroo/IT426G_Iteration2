@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff3bfd18a58829849b47c04d5981e951, type: 3}
-  m_Name: LootTable
+  m_Name: ChestLootTable
   m_EditorClassIdentifier: 
   lootInfos:
   - prefab: {fileID: 7584639513346612328, guid: 152c59f7e3ade7541ae5f656c952da2b, type: 3}

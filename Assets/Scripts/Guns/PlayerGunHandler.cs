@@ -67,9 +67,7 @@ public class PlayerGunHandler : MonoBehaviour
     }
 
     private void Start() {
-        if (playerData.guns[playerData.currentGunIndex] != null) {
-            LoadGun();
-        }
+        LoadGun();
 
         StartCoroutine(MoveCamera());
     }
@@ -174,7 +172,7 @@ public class PlayerGunHandler : MonoBehaviour
         }
 
         if (playerData.guns[playerData.currentGunIndex] == null) {
-            Debug.Log("Missing gun", this);
+            gunSprite.sprite = null;
             return;
         }
 
