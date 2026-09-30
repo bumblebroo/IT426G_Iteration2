@@ -18,8 +18,8 @@ public class EnemyMeleeAttackState : EnemyState
     private Collider2D attackCollider;
     private float attackTimeStamp;
 
-    public override void EnterState() {
-        // Do nothing
+    public override void Initialize(EnemyBehaviour enemyBehaviour, Animator animator, Rigidbody2D rb, SpriteRenderer sr) {
+        base.Initialize(enemyBehaviour, animator, rb, sr);
         attackTimeStamp = Time.time - attackCD - 1;
     }
 
@@ -33,6 +33,7 @@ public class EnemyMeleeAttackState : EnemyState
         base.EnterState();
 
         List<Collider2D> colliders = new List<Collider2D>();
+        HashSet<HealthBase> hits = new HashSet<HealthBase>();
         attackCollider.Overlap(colliders);
 
         for (int i = 0; i < colliders.Count; i++) {
@@ -41,6 +42,11 @@ public class EnemyMeleeAttackState : EnemyState
                 continue;
             }
 
+            if (hits.Contains(health)) {
+                continue;
+            }
+
+            hits.Add(health);
             health.TakeDamage(damage);
         }
 

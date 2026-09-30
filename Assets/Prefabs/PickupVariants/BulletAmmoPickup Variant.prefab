@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4610947021526939927, guid: b35fabecceaf59447aae3065e91dfa99, type: 3}
+    - target: {fileID: 3762767986057276283, guid: 23a57715b345dc54e94a8c9478d5e698, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4333374871781757490, guid: 23a57715b345dc54e94a8c9478d5e698, type: 3}
       propertyPath: m_Name
       value: BulletAmmoPickup Variant

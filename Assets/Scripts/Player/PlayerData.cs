@@ -34,7 +34,7 @@ public class PlayerData : ScriptableObject
     public UnityEvent<int> bombCountUpdated;
 
     [HideInInspector]
-    public  GunScriptableObject[] guns;
+    public GunScriptableObject[] guns;
 
     [HideInInspector]
     public int currentGunIndex;

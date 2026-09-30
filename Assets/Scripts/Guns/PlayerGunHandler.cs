@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerGunHandler : MonoBehaviour
 {
+    private bool alive = true;
+
     [SerializeField]
     private PlayerData playerData;
 
@@ -61,6 +63,7 @@ public class PlayerGunHandler : MonoBehaviour
     public void Die() {
         StopCoroutine(MoveCamera());
         gunSprite.sprite = null;
+        alive = false;
     }
 
     private void Start() {
@@ -72,7 +75,7 @@ public class PlayerGunHandler : MonoBehaviour
     }
 
     private IEnumerator MoveCamera() {
-        while (true) {
+        while (alive) {
             mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
             Vector2 mouseDir = mouseWorldPosition - (Vector2)transform.position;
             mouseDir *= percentDistance;
@@ -151,6 +154,10 @@ public class PlayerGunHandler : MonoBehaviour
     }
 
     public void SwitchGun() {
+        if (!alive) {
+            return;
+        }
+
         int otherGunIndex = playerData.currentGunIndex == 0 ? 1 : 0;
         if (playerData.guns[otherGunIndex] == null) {
             return;
@@ -162,6 +169,10 @@ public class PlayerGunHandler : MonoBehaviour
     }
 
     private void LoadGun() {
+        if (!alive) {
+            return;
+        }
+
         if (playerData.guns[playerData.currentGunIndex] == null) {
             Debug.Log("Missing gun", this);
             return;
@@ -174,6 +185,10 @@ public class PlayerGunHandler : MonoBehaviour
     }
 
     public void PickUpGun(InputAction.CallbackContext context) {
+        if (!alive) {
+            return;
+        }
+
         if (context.phase != InputActionPhase.Started) {
             return;
         }
@@ -203,6 +218,10 @@ public class PlayerGunHandler : MonoBehaviour
     }
 
     public void HandleShoot(InputAction.CallbackContext context) {
+        if (!alive) {
+            return;
+        }
+
         if (!playerData.guns[playerData.currentGunIndex]) {
             return;
         }

@@ -6,7 +6,7 @@ public class EnemyRegistry : MonoBehaviour
     private static EnemyRegistry instance;
 
     [SerializeField]
-    private GameObject portalPrefab;
+    private Transform portalTransform;
 
     [SerializeField]
     private string nextSceneName;
@@ -34,9 +34,13 @@ public class EnemyRegistry : MonoBehaviour
             return;
         }
 
+        if (!portalTransform) {
+            return;
+        }
+
         if(enemies.Count == 0) {
-            GameObject portal = Instantiate(portalPrefab, enemy.transform.position, Quaternion.identity);
-            portal.GetComponent<LoadLevelOnTrigger>().SetNextSceneName(nextSceneName);
+            portalTransform.position = enemy.transform.position;
+            portalTransform.gameObject.SetActive(true);
         }
     }
 }

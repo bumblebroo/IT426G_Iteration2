@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private static PlayerMovement instance;
 
+    private bool alive = true;
+
     [SerializeField]
     private PlayerWalkState playerWalkState;
     [SerializeField]
@@ -46,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Die() {
         StopCoroutine(DoMovement());
+        alive = false;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator DoMovement() {
 
-        while (true) {
+        while (alive) {
             yield return new WaitForEndOfFrame();
 
             if (currentMovementState == null) {
@@ -96,6 +99,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Dash(InputAction.CallbackContext context) {
+        if (!alive) {
+            return;
+        }
+
         if(context.phase != InputActionPhase.Started) {
             return;
         }
