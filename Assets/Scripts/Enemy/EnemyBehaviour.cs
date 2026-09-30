@@ -65,8 +65,12 @@ public abstract class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    protected virtual void Start()
-    {       
+    protected virtual void OnDestroy() {
+        EnemyRegistry.Instance.RemoveEnemy(this, true);
+    }
+
+    protected virtual void Start() {
+        EnemyRegistry.Instance.RegisterEnemy(this);
         currentState.EnterState();
     }
 

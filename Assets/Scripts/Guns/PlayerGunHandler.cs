@@ -60,12 +60,15 @@ public class PlayerGunHandler : MonoBehaviour
 
     public void Die() {
         StopCoroutine(MoveCamera());
+        gunSprite.sprite = null;
     }
 
     private void Start() {
-        StartCoroutine(MoveCamera());
+        if (playerData.guns[playerData.currentGunIndex] != null) {
+            LoadGun();
+        }
 
-        gunSprite.sprite = null;
+        StartCoroutine(MoveCamera());
     }
 
     private IEnumerator MoveCamera() {
