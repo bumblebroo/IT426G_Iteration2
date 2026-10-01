@@ -48,6 +48,7 @@ MonoBehaviour:
   pivot: {fileID: 537637206271990003}
   firePoint: {fileID: 116175988313933082}
   fireRate: 1.5
+  angleVariation: 3
   projectile: {fileID: 799705485698464075, guid: 18b6a07016d8d1b419a2395be615da39, type: 3}
 --- !u!1 &3498763236379610874
 GameObject:
@@ -250,7 +251,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1995158010, guid: b35fabecceaf59447aae3065e91dfa99, type: 3}
+  m_Sprite: {fileID: 1532433470693167745, guid: 1d9a5a80eaf861d4683c00e07582b8fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -271,7 +272,7 @@ Animator:
   m_GameObject: {fileID: 5120584679093750060}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c642e08b2709d034388f82acd8fef62e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -332,16 +333,16 @@ MonoBehaviour:
   playerPosMargin: 0.2
   maxLookDistance: 6
   wanderState:
-    animationTrigger: 
+    animationTrigger: Walk
     speed: 1
     acceleration: 13
     newDirCD: 2
   chaseState:
-    animationTrigger: 
+    animationTrigger: Walk
     speed: 3.5
     acceleration: 14
   retreatState:
-    animationTrigger: 
+    animationTrigger: Flee
     speed: 2
     acceleration: 16
   weapon: {fileID: 358381267559889647}
@@ -471,7 +472,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.6
       inSlope: 0
       outSlope: 0
       tangentMode: 0
