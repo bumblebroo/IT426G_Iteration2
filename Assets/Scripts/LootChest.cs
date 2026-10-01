@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class LootChest : MonoBehaviour
@@ -7,6 +8,14 @@ public class LootChest : MonoBehaviour
 
     [SerializeField]
     private int minLootAmount, maxLootAmount;
+
+    [Space]
+
+    [SerializeField]
+    private float awayPushSpeed;
+
+    [SerializeField]
+    private Sprite openSprite;
 
     private bool opened = false;
 
@@ -19,6 +28,8 @@ public class LootChest : MonoBehaviour
             return;
         }
 
+        GetComponent<SpriteRenderer>().sprite = openSprite;
+
         int amount = Random.Range(minLootAmount, maxLootAmount);
 
         for (int i = 0; i < amount; i++) {
@@ -29,6 +40,13 @@ public class LootChest : MonoBehaviour
     }
 
     private void SpawnLoot() {
-        Instantiate(lootTable.GetPrefab(), transform.position, Quaternion.identity);
+        GameObject lootObject = Instantiate(lootTable.GetPrefab(), transform.position, Quaternion.identity);
+
+        Rigidbody2D rb;
+        if(!lootObject.TryGetComponent<Rigidbody2D>(out rb)) {
+            return;
+        }
+
+        rb.AddForce(new Vector2(Random.value - 0.5f, Random.value - 0.5f).normalized * awayPushSpeed);
     }
 }
