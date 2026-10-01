@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1995158010, guid: b35fabecceaf59447aae3065e91dfa99, type: 3}
+  m_Sprite: {fileID: -4501106130154332734, guid: 94efeca0c63ab3944bf5b11789e89907, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -178,12 +178,12 @@ MonoBehaviour:
   playerPosMargin: 0
   maxLookDistance: 4.5
   wanderState:
-    animationTrigger: 
+    animationTrigger: Walk
     speed: 1
     acceleration: 12
     newDirCD: 2
   chaseState:
-    animationTrigger: 
+    animationTrigger: Angry
     speed: 5.6
     acceleration: 30
   selfDestructState:
@@ -200,7 +200,7 @@ Animator:
   m_GameObject: {fileID: 938317756644824026}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 11b2c523d1523034eb3a823e44b84b9f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

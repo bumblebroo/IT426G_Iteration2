@@ -41378,7 +41378,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.41602623, g: 0.33264, b: 0.504, a: 1}
+  m_Color: {r: 0.41568628, g: 0.33333334, b: 0.5058824, a: 1}
   m_Origin: {x: -25, y: -45, z: 0}
   m_Size: {x: 67, y: 69, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -43792,6 +43792,14 @@ PrefabInstance:
     - target: {fileID: 1610923676821735838, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 0.99999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 0.9998041
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
