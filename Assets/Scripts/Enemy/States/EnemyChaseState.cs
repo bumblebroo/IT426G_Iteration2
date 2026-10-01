@@ -17,6 +17,6 @@ public class EnemyChaseState : EnemyState
     public override void EnemyUpdate() {
         Vector2 playerDir = EnemyBehaviour.PlayerPosKnowledge - (Vector2)EnemyBehaviour.transform.position;
         Move(playerDir.normalized, speed, acceleration);
-        VelocityFlipSprite();
+        VelocityFlipSprite(playerDir);
     }
 }

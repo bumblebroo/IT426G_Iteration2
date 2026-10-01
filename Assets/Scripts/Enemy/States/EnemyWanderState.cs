@@ -29,6 +29,6 @@ public class EnemyWanderState : EnemyState
         }
 
         Move(dir, speed, acceleration);
-        VelocityFlipSprite();
+        VelocityFlipSprite(dir);
     }
 }

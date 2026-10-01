@@ -18,10 +18,10 @@ public class EnemyRetreatState : EnemyState
         Vector2 playerDir = EnemyBehaviour.PlayerPosKnowledge - (Vector2)EnemyBehaviour.transform.position;
         Move(-playerDir.normalized, speed, acceleration);
 
-        if (Rb.linearVelocity.x > 0) {
+        if (playerDir.x > 0) {
+            Sr.flipX = true;    
+        } else if (playerDir.x < 0) {
             Sr.flipX = false;
-        } else if (Rb.linearVelocity.x < 0) {
-            Sr.flipX = true;
         }
     }
 }

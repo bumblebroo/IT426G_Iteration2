@@ -36,10 +36,10 @@ public abstract class EnemyState
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, desiredDirection * speed, acceleration * Time.deltaTime);
     }
 
-    protected virtual void VelocityFlipSprite() {
-        if (rb.linearVelocity.x > 0) {
+    protected virtual void VelocityFlipSprite(Vector2 decisionBasis) {
+        if (decisionBasis.x > 0) {
             sr.flipX = true;
-        } else if (rb.linearVelocity.x < 0) {
+        } else if (decisionBasis.x < 0) {
             sr.flipX = false;
         }
     }
