@@ -4,7 +4,7 @@ public class ResetPlayerData : MonoBehaviour
 {
     [SerializeField]
     private PlayerData playerData;
-    void Start()
+    void Awake()
     {
         playerData.ResetData();
     }
