@@ -17637,14 +17637,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
-      propertyPath: m_NormalizedViewPortRect.height
-      value: 0.9988938
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
