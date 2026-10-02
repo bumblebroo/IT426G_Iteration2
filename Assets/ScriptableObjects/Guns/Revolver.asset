@@ -22,4 +22,5 @@ MonoBehaviour:
   cameraShake: 0.2
   ammoType: 1
   projectileScriptableObject: {fileID: 11400000, guid: 926d5106365990243821c6681a1b5e2f, type: 2}
-  shootEffectPrefabs: []
+  shootEffectPrefabs:
+  - {fileID: 7688253960460256454, guid: 0e95d125b0e96ec44bee3f371ffd976f, type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LootChest : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class LootChest : MonoBehaviour
 
     [SerializeField]
     private Sprite openSprite;
+
+    public UnityEvent ChestOpened;
 
     private bool opened = false;
 
@@ -37,6 +40,7 @@ public class LootChest : MonoBehaviour
         }
 
         opened = true;
+        ChestOpened?.Invoke();
     }
 
     private void SpawnLoot() {
