@@ -11,7 +11,8 @@ public class PlayerHealth : HealthBase
     public UnityEvent OnDeath;
     public override void TakeDamage(int damage) {
         playerData.CurrentHealth -= damage;
-    
+        OnHit?.Invoke();
+
         if(playerData.CurrentHealth <= 0) {
             OnDeath?.Invoke();
         }
