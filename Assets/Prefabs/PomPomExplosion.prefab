@@ -4908,7 +4908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitRadius: 0.8
   damage: 1
-  knockBack: 4
+  knockBack: 6
 --- !u!114 &7363120122369598083
 MonoBehaviour:
   m_ObjectHideFlags: 0
