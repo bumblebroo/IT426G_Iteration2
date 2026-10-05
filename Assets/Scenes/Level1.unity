@@ -16769,6 +16769,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579404497}
   m_CullTransparentMesh: 1
+--- !u!4 &1611251754 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7815722047789409990, guid: 64b20f942ff3f6740a9a62a13feb929a, type: 3}
+  m_PrefabInstance: {fileID: 1396352527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1671016059
 GameObject:
   m_ObjectHideFlags: 0
@@ -17235,7 +17240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cebc2ddea8a57542a382c8b70306626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portalTransform: {fileID: 0}
+  portalTransform: {fileID: 1611251754}
 --- !u!4 &1894969333
 Transform:
   m_ObjectHideFlags: 0
@@ -17750,15 +17755,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.028022418
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.9436882
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.9987805
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
