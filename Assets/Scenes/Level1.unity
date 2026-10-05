@@ -16481,11 +16481,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b20f942ff3f6740a9a62a13feb929a, type: 3}
---- !u!4 &1396352528 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7815722047789409990, guid: 64b20f942ff3f6740a9a62a13feb929a, type: 3}
-  m_PrefabInstance: {fileID: 1396352527}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1484450551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17240,7 +17235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cebc2ddea8a57542a382c8b70306626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portalTransform: {fileID: 1396352528}
+  portalTransform: {fileID: 0}
 --- !u!4 &1894969333
 Transform:
   m_ObjectHideFlags: 0

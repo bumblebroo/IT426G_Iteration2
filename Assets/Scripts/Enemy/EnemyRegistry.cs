@@ -8,7 +8,7 @@ public class EnemyRegistry : MonoBehaviour
     [SerializeField]
     private Transform portalTransform;
 
-    private List<EnemyBehaviour> enemies = new List<EnemyBehaviour>();
+    private HashSet<EnemyBehaviour> enemies = new HashSet<EnemyBehaviour>();
 
     public static EnemyRegistry Instance => instance;
 
