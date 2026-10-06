@@ -56,7 +56,7 @@ public class PlayerData : ScriptableObject
             return shellCount;
         }
         set {
-            shellCount = value;
+            shellCount = Mathf.Min(value, 0);
             shellCountUpdated?.Invoke(shellCount);
         }
     }
@@ -66,7 +66,7 @@ public class PlayerData : ScriptableObject
             return bulletCount;
         }
         set {
-            bulletCount = value;
+            bulletCount = Mathf.Min(value, 0);
             bulletCountUpdated?.Invoke(bulletCount);
         }
     }
@@ -76,7 +76,7 @@ public class PlayerData : ScriptableObject
             return boltCount;
         }
         set {
-            boltCount = value;
+            boltCount = Mathf.Min(value, 0);
             boltCountUpdated?.Invoke(boltCount);
         }
     }
@@ -86,7 +86,7 @@ public class PlayerData : ScriptableObject
             return bombCount;
         }
         set {
-            bombCount = value;
+            bombCount = Mathf.Min(value, 0);
             bombCountUpdated?.Invoke(bombCount);
         }
     }
