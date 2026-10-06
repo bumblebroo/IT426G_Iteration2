@@ -347,7 +347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7815208532867222842, guid: 64b20f942ff3f6740a9a62a13feb929a, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: MainMenu
+      value: WinScene
       objectReference: {fileID: 0}
     - target: {fileID: 7815208532867222842, guid: 64b20f942ff3f6740a9a62a13feb929a, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -355,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7815722047789409990, guid: 64b20f942ff3f6740a9a62a13feb929a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7815722047789409990, guid: 64b20f942ff3f6740a9a62a13feb929a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -43437,11 +43437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.028022418
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.9436882
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3555395609236103827, guid: 4ef22f1491715bb45a8ecb61840bd94c, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
